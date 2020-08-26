@@ -1,3 +1,5 @@
-npx ng serve api
+To start the run `npx ng serve api`
 
-After application starts http://localhost:3333/api/v1/hello => in the terminal you should be see "Gateway checked" printed
+After application starts goto `http://localhost:3333/api/v1/hello` => Should print in the terminal "Gateway checked".
+
+When run the GraphQl query that message won't show
