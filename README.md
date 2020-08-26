@@ -1,3 +1,3 @@
-npx ng serve api
+To run the app `npx ng serve api`
 
-After application starts http://localhost:3333/api/v1/hello => in the terminal you should be see "Gateway checked" printed
+After application starts `http://localhost:3333/api/v1/hello` => shluld print in the terminal "Gateway checked" printed
