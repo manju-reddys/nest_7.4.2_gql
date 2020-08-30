@@ -3,6 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './gateway/auth.module';
+import { GatewayMiddleware } from './gateway/gateway.middleware';
 import { GpModule } from './graphql/gp.module';
 import { asyncClient } from './providers/async.provider';
 
@@ -22,13 +23,14 @@ const syncProvider = [{
             uploads: false,
             useGlobalPrefix: true
         }),
-        AuthModule
+        AuthModule,
+        GatewayMiddleware
     ],
     controllers: [AppController],
     providers: [
         AppService,
-        ...syncProvider
+        ...syncProvider // --> Async provider
     ],
-    exports: [...syncProvider]
+    exports: [...syncProvider] // --> Exported async provider
 })
 export class AppModule { }
