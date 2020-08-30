@@ -4,7 +4,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './gateway/auth.module';
 import { GpModule } from './graphql/gp.module';
+import { asyncClient } from './providers/async.provider';
 
+const syncProvider = [{
+    provide: 'ASYNC_PROV',
+    useFactory: async () => await asyncClient()
+}]
 
 @Module({
     imports: [
@@ -20,6 +25,10 @@ import { GpModule } from './graphql/gp.module';
         AuthModule
     ],
     controllers: [AppController],
-    providers: [AppService],
+    providers: [
+        AppService,
+        ...syncProvider
+    ],
+    exports: [...syncProvider]
 })
 export class AppModule { }
